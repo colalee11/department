@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="left">
+
+        <ImageView
+            android:id="@+id/ll_back"
+            android:layout_width="20dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/back" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="选择头像-基本信息"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/register_head_pic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/shoppingcar"
+            android:layout_marginBottom="15dp" />
+
+        <EditText
+            android:id="@+id/ll_name_information"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/radio_q"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:hint="真实姓名"
+            android:textSize="15sp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ll_nc_information"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"
+            android:background="@drawable/radio_q"
+            android:gravity="center"
+            android:hint="网络昵称"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ll_sex_information"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/radio_q"
+            android:gravity="center"
+            android:hint="性别"
+            android:textSize="15sp"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="请输入您的真实姓名，这将影响到你的软件体验"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:id="@+id/ll_register_information"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/radio"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Campus department</string>
+    <string name="my_title">我的订单</string>
+    <string name="shoucang">收藏</string>
+    <string name="pingjia">评价</string>
+    <string name="kaquan">卡券</string>
+</resources>
