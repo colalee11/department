@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"   android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#D8D7D7"
- android:layout_height="match_parent">
+    android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:id="@+id/r1"
@@ -28,21 +28,23 @@
             android:textColor="#000"
             android:textSize="16sp" />
     </RelativeLayout>
+
     <ListView
         android:id="@+id/listview"
-        android:layout_below="@id/r1"
-        android:layout_above="@+id/receiving"
-        android:background="@null"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/receiving"
+        android:layout_below="@id/r1"
+        android:background="@null" />
+
     <TextView
         android:id="@+id/receiving"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:text="添加收货地址"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         android:background="#FF5722"
-        android:textSize="16sp"
         android:gravity="center"
+        android:text="添加收货地址"
         android:textColor="#000"
-        android:layout_height="40dp"/>
+        android:textSize="16sp" />
 </RelativeLayout>

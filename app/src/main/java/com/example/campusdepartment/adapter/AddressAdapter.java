@@ -15,14 +15,14 @@ public class AddressAdapter extends BaseAdapter {
     private List<AddressBean> list;
     private LayoutInflater layoutInflater;
 
-    public AddressAdapter(Context context,List<AddressBean> list) {
+    public AddressAdapter(Context context, List<AddressBean> list) {
         this.list = list;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return list==null?0 : list.size();
+        return list == null ? 0 : list.size();
     }
 
     @Override
@@ -38,26 +38,27 @@ public class AddressAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
-        if (view==null){
-            view=layoutInflater.inflate(R.layout.list_address,null);
-            viewHolder=new ViewHolder(view);
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.list_address, null);
+            viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
-        }else {
-            viewHolder= (ViewHolder) view.getTag();
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
-        AddressBean addressBean= (AddressBean) getItem(i);
+        AddressBean addressBean = (AddressBean) getItem(i);
         viewHolder.name.setText(addressBean.getName());
         viewHolder.phone.setText(addressBean.getPhonenumber());
-        viewHolder.address.setText(addressBean.getCity()+addressBean.getAddress());
+        viewHolder.address.setText(addressBean.getCity() + addressBean.getAddress());
         return view;
     }
 
-    class ViewHolder{
-        private TextView name,phone,address;
-        public ViewHolder(View view){
-            name=view.findViewById(R.id.name);
-            phone=view.findViewById(R.id.phone);
-            address=view.findViewById(R.id.address);
+    class ViewHolder {
+        private TextView name, phone, address;
+
+        public ViewHolder(View view) {
+            name = view.findViewById(R.id.name);
+            phone = view.findViewById(R.id.phone);
+            address = view.findViewById(R.id.address);
         }
     }
 }

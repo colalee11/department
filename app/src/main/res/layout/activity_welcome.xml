@@ -10,10 +10,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/radio_background"
         android:layout_gravity="right"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/radio_background"
         android:orientation="horizontal">
 
         <TextView
@@ -21,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="3"
             android:layout_marginLeft="6dp"
+            android:text="3"
             android:textColor="#000"
             android:textSize="16sp" />
 

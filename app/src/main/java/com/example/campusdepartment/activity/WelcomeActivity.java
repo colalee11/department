@@ -19,6 +19,23 @@ public class WelcomeActivity extends BaseActivity {
     //声明时间有多少;
     private int count = 3;
     private Animation animation;
+    //进行一个消息的处理
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            if (msg.what == 0) {
+                textView.setText(getCount() + "");
+                handler.sendEmptyMessageDelayed(0, 1000);
+                animation.reset();
+                textView.startAnimation(animation);
+            }
+
+        }
+
+        ;
+
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,21 +68,4 @@ public class WelcomeActivity extends BaseActivity {
         }
         return count;
     }
-
-    //进行一个消息的处理
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            if (msg.what == 0) {
-                textView.setText(getCount() + "");
-                handler.sendEmptyMessageDelayed(0, 1000);
-                animation.reset();
-                textView.startAnimation(animation);
-            }
-
-        }
-
-        ;
-
-    };
 }

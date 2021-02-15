@@ -23,11 +23,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusDepartment">
-        <activity android:name=".activity.Receiving_address_Activity"
-            android:theme="@style/ColorTranslucentTheme"
-            />
-        <activity android:name=".activity.UserInfoActivity"
-            android:theme="@style/ColorTranslucentTheme"/>
+        <activity
+            android:name=".activity.Receiving_address_Activity"
+            android:theme="@style/ColorTranslucentTheme" />
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:theme="@style/ColorTranslucentTheme" />
         <activity
             android:name=".activity.ChangePasswordActivity"
             android:theme="@style/ColorTranslucentTheme" />
@@ -45,7 +46,7 @@
             android:theme="@style/ColorTranslucentTheme" />
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/ColorTranslucentTheme" >
+            android:theme="@style/ColorTranslucentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

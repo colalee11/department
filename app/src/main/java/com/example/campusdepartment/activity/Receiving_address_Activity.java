@@ -24,14 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receiving_address_Activity extends BaseActivity implements View.OnClickListener {
+    public static Handler handler;
+    //接收数据库数据所需要的数组，数据信息
+    public static String[] getData;
     TextView add_receiving;
     ImageView back;
     ListView listView;
     List<AddressBean> mList = new ArrayList<>();
-    public static Handler handler;
-    //接收数据库数据所需要的数组，数据信息
-    public static String[] getData;
-    private String  u_id;
+    private String u_id;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,15 +43,16 @@ public class Receiving_address_Activity extends BaseActivity implements View.OnC
 
 
     }
-    private void initView(){
+
+    private void initView() {
         listView = findViewById(R.id.listview);
-        add_receiving=findViewById(R.id.receiving);
-        back=findViewById(R.id.back);
+        add_receiving = findViewById(R.id.receiving);
+        back = findViewById(R.id.back);
         add_receiving.setOnClickListener(this);
         back.setOnClickListener(this);
     }
 
-    private void data(){
+    private void data() {
         final UpdateFactory factory = new UpdateFactory();
         factory.query_address_all(u_id);
         final int[] cc = {0};
@@ -60,7 +62,7 @@ public class Receiving_address_Activity extends BaseActivity implements View.OnC
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
                 getData = (String[]) msg.obj;
-                Log.e("bbb", getData+"");
+                Log.e("bbb", getData + "");
                 Bundle c = msg.getData();
                 cc[0] = c.getInt("Query_address_count");
                 Log.e("Query_address_count", "Query_address_count: " + cc[0]);
@@ -75,21 +77,22 @@ public class Receiving_address_Activity extends BaseActivity implements View.OnC
                         Log.e("bbb", "cccc");
                         AddressAdapter myAdapter = new AddressAdapter(Receiving_address_Activity.this, mList);
                         listView.setAdapter(myAdapter);
-                       // listView.notifyAll();
+                        // listView.notifyAll();
                     }
                 }
             }
         };
     }
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.receiving:
-                startActivity(new Intent(Receiving_address_Activity.this,UserInfoActivity.class));
+                startActivity(new Intent(Receiving_address_Activity.this, UserInfoActivity.class));
                 finish();
                 break;
             case R.id.back:
-               finish();
+                finish();
                 break;
         }
     }

@@ -36,20 +36,21 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       prmess();
-       immersive();
+        prmess();
+        immersive();
 
     }
+
     //权限申请
-    private void  prmess(){
+    private void prmess() {
         PermissionX.init(this)
-                .permissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE)
+                .permissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                 .onExplainRequestReason(new ExplainReasonCallbackWithBeforeParam() {
                     @Override
                     public void onExplainReason(ExplainScope scope, List<String> deniedList, boolean beforeRequest) {
 
                         for (int i = 0; i < deniedList.size(); i++) {
-                            Log.i("111","即将申请的权限是程序必须依赖的权限"+deniedList.get(i));
+                            Log.i("111", "即将申请的权限是程序必须依赖的权限" + deniedList.get(i));
                         }
                         scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "我已明白");
                     }
@@ -57,9 +58,9 @@ public class BaseActivity extends AppCompatActivity {
                 .onForwardToSettings(new ForwardToSettingsCallback() {
                     @Override
                     public void onForwardToSettings(ForwardScope scope, List<String> deniedList) {
-                        Log.i("111","您需要去应用程序设置当中手动开启权限");
+                        Log.i("111", "您需要去应用程序设置当中手动开启权限");
                         for (int i = 0; i < deniedList.size(); i++) {
-                            Log.i("111","您需要去应用程序设置当中手动开启权限"+deniedList.get(i));
+                            Log.i("111", "您需要去应用程序设置当中手动开启权限" + deniedList.get(i));
                         }
                         scope.showForwardToSettingsDialog(deniedList, "您需要去应用程序设置当中手动开启权限", "我已明白");
                     }
@@ -73,7 +74,7 @@ public class BaseActivity extends AppCompatActivity {
 
                         } else {
                             for (int i = 0; i < deniedList.size(); i++) {
-                                Log.i("111","您拒绝了如下权限"+deniedList.get(i));
+                                Log.i("111", "您拒绝了如下权限" + deniedList.get(i));
                             }
                             //  Toast.makeText(MainActivity.this, "您拒绝了如下权限：" + deniedList, Toast.LENGTH_SHORT).show();
                         }
@@ -82,7 +83,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //沉浸式
-    private void immersive(){
+    private void immersive() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

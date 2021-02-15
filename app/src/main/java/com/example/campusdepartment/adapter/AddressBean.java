@@ -13,6 +13,9 @@ public class AddressBean {
         this.address = address;
     }
 
+    public AddressBean() {
+    }
+
     @Override
     public String toString() {
         return "AddressBean{" +
@@ -53,8 +56,5 @@ public class AddressBean {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public AddressBean() {
     }
 }

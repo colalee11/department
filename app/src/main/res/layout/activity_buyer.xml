@@ -2,12 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D0F92637"
-android:id="@+id/test"
-    android:fitsSystemWindows="true"
-    >
+    android:fitsSystemWindows="true">
 
     <FrameLayout
         android:id="@+id/framelayout"
@@ -21,8 +20,8 @@ android:id="@+id/test"
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:itemBackground="@color/white"
         android:layout_alignParentBottom="true"
+        app:itemBackground="@color/white"
         app:menu="@menu/navigation">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

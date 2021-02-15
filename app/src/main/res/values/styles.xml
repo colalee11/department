@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
 
     </style>
+
     <style name="ColorTranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">false</item>

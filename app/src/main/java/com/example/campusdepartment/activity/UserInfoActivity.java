@@ -19,12 +19,12 @@ import com.example.campusdepartment.other.UpdateFactory;
 
 
 public class UserInfoActivity extends BaseActivity implements View.OnClickListener {
+    public static String u_id;
     TextView mTvSlect, mTvCity;
     EditText set_name, set_phone, set_address;
     Button save;
     ImageView back;
     JDCityPicker mJDCityPicker;
-    public static String u_id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

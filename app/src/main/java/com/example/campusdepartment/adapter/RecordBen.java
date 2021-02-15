@@ -7,6 +7,15 @@ package com.example.campusdepartment.adapter;
 public class RecordBen {
     private String name;
 
+    public RecordBen() {
+
+    }
+
+    public RecordBen(String name) {
+
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "RecordBen{" +
@@ -19,15 +28,6 @@ public class RecordBen {
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public RecordBen() {
-
-    }
-
-    public RecordBen(String name) {
-
         this.name = name;
     }
 }

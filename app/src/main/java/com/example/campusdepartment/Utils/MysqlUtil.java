@@ -11,7 +11,6 @@ import java.sql.SQLException;
 
 /**
  * @author Administrator
- *
  */
 public class MysqlUtil {
     // 定义数据库连接参数
@@ -22,9 +21,10 @@ public class MysqlUtil {
     public static final String USERNAME = "root";
     //连接的数据库时使用的密码
     public static final String PASSWORD = "!@#123Qaz";
+
     //Demo123456!
     // 注册数据库驱动
-    public static void drive(){
+    public static void drive() {
         try {
             Class.forName(DRIVER_CLASS_NAME);
         } catch (ClassNotFoundException e) {
@@ -52,6 +52,7 @@ public class MysqlUtil {
             }
         }
     }
+
     //测试
     public static void main(String[] args) throws SQLException {
         System.out.println(MysqlUtil.getConn());

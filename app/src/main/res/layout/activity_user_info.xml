@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-  >
+    android:fitsSystemWindows="true">
+
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
@@ -27,20 +27,22 @@
             android:textColor="#000"
             android:textSize="16sp" />
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/linear_name"
-        android:layout_below="@+id/r1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/r1"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-        android:textSize="16sp"
             android:layout_marginLeft="10dp"
+            android:text="收货人"
             android:textColor="#000"
-            android:text="收货人" />
+            android:textSize="16sp" />
 
 
         <EditText
@@ -48,11 +50,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:background="@null"
             android:hint="名字"
-            android:layout_marginLeft="10dp"
             android:textSize="15sp" />
     </LinearLayout>
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -60,21 +63,23 @@
         android:layout_below="@+id/linear_name"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="#BCBBBB"/>
+        android:background="#BCBBBB" />
+
     <LinearLayout
         android:id="@+id/linear_phonenumber"
-        android:layout_below="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="16sp"
             android:layout_marginLeft="10dp"
+            android:text="手机号码"
             android:textColor="#000"
-            android:text="手机号码" />
+            android:textSize="16sp" />
 
 
         <EditText
@@ -82,11 +87,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:background="@null"
             android:hint="手机号"
-            android:layout_marginLeft="10dp"
             android:textSize="15sp" />
     </LinearLayout>
+
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
@@ -94,32 +100,35 @@
         android:layout_below="@+id/linear_phonenumber"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="#BCBBBB"/>
-<LinearLayout
-    android:id="@+id/linear_city"
-    android:layout_below="@+id/linear_phonenumber"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:id="@+id/tv_select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="16sp"
-        android:layout_marginLeft="10dp"
-        android:textColor="#000"
-        android:text="选择城市" />
+        android:background="#BCBBBB" />
 
-    <TextView
-        android:id="@+id/tv_city_pick"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="16sp" />
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_phonenumber"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="选择城市"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_city_pick"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textSize="16sp" />
+    </LinearLayout>
+
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
@@ -127,21 +136,23 @@
         android:layout_below="@+id/linear_city"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="#BCBBBB"/>
+        android:background="#BCBBBB" />
+
     <LinearLayout
         android:id="@+id/linear_address"
-        android:layout_below="@+id/linear_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_city"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="16sp"
             android:layout_marginLeft="10dp"
+            android:text="详细地址"
             android:textColor="#000"
-            android:text="详细地址" />
+            android:textSize="16sp" />
 
 
         <EditText
@@ -149,11 +160,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:background="@null"
             android:hint="小区楼栋/乡村名称"
-            android:layout_marginLeft="10dp"
             android:textSize="15sp" />
     </LinearLayout>
+
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
@@ -161,21 +173,20 @@
         android:layout_below="@+id/linear_address"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="#BCBBBB"/>
+        android:background="#BCBBBB" />
 
 
     <Button
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="保存"
-        android:textSize="16sp"
-        android:textColor="#fff"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:background="@drawable/search_background"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/search_background"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 </RelativeLayout>

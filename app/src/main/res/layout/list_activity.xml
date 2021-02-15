@@ -1,87 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content">
-<RelativeLayout
-    android:layout_width="175dp"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/home_background"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="175dp"
-        android:scaleType="fitXY"
-        android:layout_height="200dp"
-        android:src="@mipmap/welcome"
-        />
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/picture"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:ellipsize="end"
-        android:maxEms="11"
-        android:text="你你你你你你你你你你你你你你你你你你"
-        android:width="135dp"
-        android:maxLines="2"
-        android:textSize="14sp"
-        android:textColor="#000"
-        android:maxLength="22"
-        />
-    <ImageView
-        android:id="@+id/money"
-        android:layout_marginTop="15dp"
-        android:layout_width="10dp"
-        android:layout_height="12dp"
-        android:layout_marginLeft="5dp"
-        android:layout_below="@+id/content"
-      android:layout_marginBottom="6dp"
-        android:src="@mipmap/money"
-        />
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/content"
-        android:text="121.2"
-        android:textSize="15sp"
-
-        android:textColor="#fa0303"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/money"
-        />
-<TextView
-    android:id="@+id/text"
-    android:layout_below="@+id/content"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentRight="true"
-    android:text="人付款"
-    android:textColor="#000"
-    android:gravity="bottom"
-    android:textSize="10sp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_alignBottom="@+id/money"
-    />
-    <TextView
-        android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/content"
-        android:text="121321"
-        android:textColor="#000"
-        android:textSize="10sp"
-        android:id="@+id/number"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:gravity="bottom"
-        android:layout_alignBottom="@+id/money"
-        android:layout_toLeftOf="@+id/text"
-        />
-</RelativeLayout>
+        android:layout_marginRight="10dp"
+        android:background="@drawable/home_background">
+
+        <ImageView
+            android:id="@+id/picture"
+            android:layout_width="175dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/welcome" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/picture"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:width="135dp"
+            android:ellipsize="end"
+            android:maxEms="11"
+            android:maxLength="22"
+            android:maxLines="2"
+            android:text="你你你你你你你你你你你你你你你你你你"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/money"
+            android:layout_width="10dp"
+            android:layout_height="12dp"
+            android:layout_below="@+id/content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="6dp"
+            android:src="@mipmap/money" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/money"
+
+            android:text="121.2"
+            android:textColor="#fa0303"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content"
+            android:layout_alignBottom="@+id/money"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:text="人付款"
+            android:textColor="#000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content"
+            android:layout_alignBottom="@+id/money"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/text"
+            android:gravity="bottom"
+            android:text="121321"
+            android:textColor="#000"
+            android:textSize="10sp" />
+    </RelativeLayout>
 
 </RelativeLayout>

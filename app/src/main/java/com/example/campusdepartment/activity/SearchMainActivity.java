@@ -95,12 +95,12 @@ public class SearchMainActivity extends BaseActivity implements AdapterView.OnIt
             public boolean setViewValue(View view, Object data, String textRepresentation) {
                 if (view instanceof ImageView && data instanceof Bitmap) {
                     ImageView iv = (ImageView) view;
-                  iv.setImageBitmap((Bitmap) data);
+                    iv.setImageBitmap((Bitmap) data);
                     return true;
                 } else {
                     return false;
                 }
-           }
+            }
         });
         mListView1.setAdapter(adapter1);
         mListView1.setOnItemClickListener(this);
@@ -275,7 +275,7 @@ public class SearchMainActivity extends BaseActivity implements AdapterView.OnIt
         Intent intent = new Intent(SearchMainActivity.this, ProductDetailsMainActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        finish(); 
+        finish();
     }
 
 }

@@ -23,6 +23,7 @@ public class BaseFragment extends Fragment {
     protected boolean useThemestatusBarColor = false;
     //是否使用状态栏文字和图标为暗色，如果状态栏采用了白色系，则需要使状态栏和图标为暗色，android6.0以上可以设置
     protected boolean useStatusBarColor = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
@@ -49,7 +50,6 @@ public class BaseFragment extends Fragment {
         return null;
 
     }
-
 
 
 }

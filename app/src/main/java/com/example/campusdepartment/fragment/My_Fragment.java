@@ -44,19 +44,20 @@ import java.util.List;
  */
 
 public class My_Fragment extends Fragment implements View.OnClickListener {
-    private final String MYFRAGMENT = "MyFragment";
-    ImageView imageView,setting,updata_name;
-    TextView name;
-    View view;
-    RelativeLayout tuichu,updataInfo;
-    private List list = new ArrayList();
     public static Handler handler;
     public static String u_id, user_check;
+    private final String MYFRAGMENT = "MyFragment";
+    ImageView imageView, setting, updata_name;
+    TextView name;
+    View view;
+    RelativeLayout tuichu, updataInfo;
     //缓存框架-头像
     ACache aCache_headPic;
+    String newname;//修改后的昵称
+    private List list = new ArrayList();
     private Connection connection = null;
     private Connection connection1 = null;
-    String newname;//修改后的昵称
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my, container, false);
@@ -64,19 +65,21 @@ public class My_Fragment extends Fragment implements View.OnClickListener {
         return view;
 
     }
-private void initView(){
-    name = view.findViewById(R.id.name);
-    imageView = view.findViewById(R.id.imagea);
-    tuichu=view.findViewById(R.id.more3);
-    updataInfo=view.findViewById(R.id.more4);
-    updata_name=view.findViewById(R.id.updata_name);
-    setting=view.findViewById(R.id.set);
-    imageView.setOnClickListener(this);
-    updata_name.setOnClickListener(this);
-    tuichu.setOnClickListener(this);
-    setting.setOnClickListener(this);
-    updataInfo.setOnClickListener(this);
-}
+
+    private void initView() {
+        name = view.findViewById(R.id.name);
+        imageView = view.findViewById(R.id.imagea);
+        tuichu = view.findViewById(R.id.more3);
+        updataInfo = view.findViewById(R.id.more4);
+        updata_name = view.findViewById(R.id.updata_name);
+        setting = view.findViewById(R.id.set);
+        imageView.setOnClickListener(this);
+        updata_name.setOnClickListener(this);
+        tuichu.setOnClickListener(this);
+        setting.setOnClickListener(this);
+        updataInfo.setOnClickListener(this);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -114,21 +117,20 @@ private void initView(){
                 try {
                     MysqlUtil.drive();
                     connection = MysqlUtil.getConn();
-                    String sql = "SELECT user_realname FROM login where user_phone="+u_id;
+                    String sql = "SELECT user_realname FROM login where user_phone=" + u_id;
                     java.sql.Statement statement = null;
                     statement = connection.createStatement();
                     ResultSet rs = statement.executeQuery(sql);
-                    while (rs.next()){
+                    while (rs.next()) {
                         String UserName = rs.getString("user_realname");
                         Log.e("cdc", UserName);
                         name.setText(UserName);
                     }
-                }catch (SQLException throwables) {
+                } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
             }
         }).start();
-
 
 
     }
@@ -145,7 +147,7 @@ private void initView(){
                 super.handleMessage(msg);
                 if ("1".equals(user_check)) {
                     list = (List) msg.obj;
-                    Log.e("bt: ",  msg.obj+"");
+                    Log.e("bt: ", msg.obj + "");
                     //  Log.e("bt: ", "查看获取的obj" + list.get(0));
                     //把读取到的图片数据,进行缓存,都是Bitmap格式
                     aCache_headPic.put("head_pic", (Bitmap) list.get(0));//后面加,10代表缓存时间为10秒,
@@ -154,7 +156,7 @@ private void initView(){
                     Bitmap headPic = aCache_headPic.getAsBitmap("head_pic");
                     //设置到头像上去
                     imageView.setImageBitmap(headPic);
-                }else {
+                } else {
                     Log.e("cdc", "666");
                 }
 
@@ -179,7 +181,7 @@ private void initView(){
                 startActivity(new Intent(getActivity(), Receiving_address_Activity.class));
                 break;
             case R.id.updata_name:
-           setUpdata_name();
+                setUpdata_name();
                 break;
         }
 
@@ -188,7 +190,7 @@ private void initView(){
     /**
      * 用户修改昵称
      */
-    private void setUpdata_name(){
+    private void setUpdata_name() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // 通过LayoutInflater来加载一个xml的布局文件作为一个View对象
         View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.updata_name, null);
@@ -201,14 +203,14 @@ private void initView(){
         view1.findViewById(R.id.btn_confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newname=et_Threshold.getText().toString().trim();
+                newname = et_Threshold.getText().toString().trim();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         MysqlUtil.drive();
                         try {
                             connection1 = MysqlUtil.getConn();
-                            String sql = "update login set user_realname=? where user_phone="+ u_id;
+                            String sql = "update login set user_realname=? where user_phone=" + u_id;
                             PreparedStatement pst = connection.prepareStatement(sql);
                             pst.setString(1, newname);
                             pst.executeUpdate();

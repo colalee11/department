@@ -27,7 +27,7 @@ public class RecordAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list==null?0 : list.size();
+        return list == null ? 0 : list.size();
     }
 
     @Override
@@ -43,23 +43,25 @@ public class RecordAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        if ( convertView==null ){
-            convertView=layoutInflater.inflate(R.layout.search_list,null);
-            viewHolder=new ViewHolder(convertView);
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.search_list, null);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else {
-            viewHolder =(ViewHolder) convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        RecordBen noteInfo= (RecordBen) getItem(position);
+        RecordBen noteInfo = (RecordBen) getItem(position);
 
         viewHolder.name.setText(noteInfo.getName());
 
         return convertView;
     }
-    class ViewHolder{
+
+    class ViewHolder {
         private TextView name;
-        public ViewHolder(View view){
-           name= (TextView) view.findViewById(R.id.text1);
+
+        public ViewHolder(View view) {
+            name = (TextView) view.findViewById(R.id.text1);
 
 
         }

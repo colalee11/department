@@ -21,13 +21,13 @@ import android.widget.ImageView;
 public class RoundImageView extends ImageView {
 
 
-    private float width,height;
+    private float width, height;
 
     private Context context;
     /**
      * 初始化圆角为15
      */
-    private float radius= 10;
+    private float radius = 10;
 
     public RoundImageView(Context context) {
         this(context, null);
@@ -77,18 +77,19 @@ public class RoundImageView extends ImageView {
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      */
-    public  int dip2px(Context context, float dpValue) {
+    public int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
     /**
      * 设置图片圆角dp值
+     *
      * @param context
      * @param radius
      */
-    public  void setImageViewRadius(Context context, float radius){
-        this.radius = dip2px(context,radius);
+    public void setImageViewRadius(Context context, float radius) {
+        this.radius = dip2px(context, radius);
     }
 
 }

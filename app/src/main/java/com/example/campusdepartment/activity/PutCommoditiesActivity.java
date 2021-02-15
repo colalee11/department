@@ -37,29 +37,31 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by 林嘉煌 on 2021/1/5.
  */
 
-public class PutCommoditiesActivity extends BaseActivity implements View.OnClickListener{
-    private EditText name,nc,sex;
+public class PutCommoditiesActivity extends BaseActivity implements View.OnClickListener {
+    public static final int CHOOSE_PICTURE = 0;
+    public static final int TAKE_PICTURE = 1;
+    public static final int CROP_SMALL_PICTURE = 2;
+    public static Uri tempUri;
+    SQLiteDatabase db_search;
+    ContentSQLiteHelper contentSQLiteHelper;
+    private EditText name, nc, sex;
     private TextView ensure_register;
     private ProgressDialog progressDialog;
     //选择图片处理
     private CircleImageView imageView_head;
-    public static final int CHOOSE_PICTURE = 0;
-    public static final int TAKE_PICTURE = 1;
-    public static Uri tempUri;
-    public static final int CROP_SMALL_PICTURE = 2;
     private Bitmap mBitmap;
     private byte[] user_pic;
     private String register_user;
-    SQLiteDatabase db_search;
-    ContentSQLiteHelper contentSQLiteHelper;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_put_commodities);
         Intent intent = getIntent();
-        register_user=intent.getStringExtra("user");
+        register_user = intent.getStringExtra("user");
         initView();
     }
+
     //id
     private void initView() {
         name = (EditText) findViewById(R.id.ll_name_information);
@@ -73,7 +75,7 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.register_head_pic:
                 showChoosePicDialog();
                 break;
@@ -81,35 +83,36 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
                 String name_data = name.getText().toString();
                 String nc_data = nc.getText().toString();
                 UpdateFactory updateFactory = new UpdateFactory();
-                if (!name_data .equals("") && !nc_data .equals("") && user_pic != null){
-                    updateFactory.information_Commodities(user_pic,name_data,nc_data,"0",register_user);
-                    Toast.makeText(this,"成功", Toast.LENGTH_SHORT)
+                if (!name_data.equals("") && !nc_data.equals("") && user_pic != null) {
+                    updateFactory.information_Commodities(user_pic, name_data, nc_data, "0", register_user);
+                    Toast.makeText(this, "成功", Toast.LENGTH_SHORT)
                             .show();
                     finish();
-                }else if (name_data.equals("")){
-                    Toast.makeText(this,"请输入商品信息", Toast.LENGTH_SHORT)
+                } else if (name_data.equals("")) {
+                    Toast.makeText(this, "请输入商品信息", Toast.LENGTH_SHORT)
                             .show();
-                }else if (nc_data.equals("")){
-                    Toast.makeText(this,"请输入商品价格", Toast.LENGTH_SHORT)
+                } else if (nc_data.equals("")) {
+                    Toast.makeText(this, "请输入商品价格", Toast.LENGTH_SHORT)
                             .show();
 
-                }else {
-                    Toast.makeText(this,"请点击上方圆头，设置商品图片", Toast.LENGTH_SHORT)
+                } else {
+                    Toast.makeText(this, "请点击上方圆头，设置商品图片", Toast.LENGTH_SHORT)
                             .show();
                 }
                 contentSQLiteHelper = new ContentSQLiteHelper(this);
                 db_search = contentSQLiteHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
-                values.put("picture",user_pic);
-                values.put("content",name_data);
-                values.put("price",nc_data);
-                values.put("number","0");
+                values.put("picture", user_pic);
+                values.put("content", name_data);
+                values.put("price", nc_data);
+                values.put("number", "0");
                 db_search.insert("commodities", null, values);
-                Log.e("BV","ccc");
+                Log.e("BV", "ccc");
                 db_search.close();
                 break;
         }
     }
+
     /**
      * 显示修改图片的对话框
      */
@@ -117,12 +120,12 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
     public void showChoosePicDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("添加图片");
-        String[] items = {"选择本地图片","拍照"};
-        builder.setNegativeButton("取消",null);
+        String[] items = {"选择本地图片", "拍照"};
+        builder.setNegativeButton("取消", null);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which){
+                switch (which) {
                     //选择本地图片
                     case CHOOSE_PICTURE:
                         Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -132,23 +135,24 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
                         break;
                     case TAKE_PICTURE:
                         Intent openCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        tempUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),"temp_image.jpg"));
+                        tempUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "temp_image.jpg"));
                         // 将拍照所得的相片保存到SD卡根目录
-                        openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,tempUri);
-                        startActivityForResult(openCameraIntent,TAKE_PICTURE);
+                        openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
+                        startActivityForResult(openCameraIntent, TAKE_PICTURE);
                         break;
                 }
             }
         });
         builder.show();
     }
+
     //图片处理过程的数据返回操作
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_OK){//resultCode意思是结果代码
-            switch (requestCode){ //requestCode意思是请求代码
+        if (resultCode == this.RESULT_OK) {//resultCode意思是结果代码
+            switch (requestCode) { //requestCode意思是请求代码
                 case TAKE_PICTURE:
                     cutImage(tempUri);//图片裁剪处理
                     break;
@@ -167,6 +171,7 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
             }
         }
     }
+
     //图片裁剪
     private void cutImage(Uri uri) {
         if (uri == null) {
@@ -187,6 +192,7 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
         intent.putExtra("return-data", true);
         startActivityForResult(intent, CROP_SMALL_PICTURE);
     }
+
     /**
      * 保存裁剪之后的图片数据
      * 上传图片到数据库里
@@ -198,21 +204,23 @@ public class PutCommoditiesActivity extends BaseActivity implements View.OnClick
             mBitmap = extras.getParcelable("data");
             imageView_head.setImageBitmap(mBitmap);//显示图片
             //得到图片资源
-            Bitmap bitmap = ((BitmapDrawable)imageView_head.getDrawable()).getBitmap();
+            Bitmap bitmap = ((BitmapDrawable) imageView_head.getDrawable()).getBitmap();
             //上传该图片到服务器,传入图片资源，转换为二进制形式保存在byte[]数组里
             user_pic = bmpToByteArray(bitmap);
             //传入图片资源的byte形式，传入要上传的账号
         }
     }
+
     //Bitmap to byte[] ,存图片
-    public byte[] bmpToByteArray(Bitmap bitmap){
+    public byte[] bmpToByteArray(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         return baos.toByteArray();
     }
+
     //禁用返回键
-    public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode== KeyEvent.KEYCODE_BACK){
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             return true;//不执行父类点击事件
         }
         return false;//继续执行父类其他点击事件

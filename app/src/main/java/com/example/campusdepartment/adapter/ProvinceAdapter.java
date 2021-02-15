@@ -20,12 +20,12 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
 
     onItemClick itemClick;
 
-    public void setOnItemListener(onItemClick itemClick) {
-        this.itemClick = itemClick;
-    }
-
     public ProvinceAdapter(List<String> list) {
         this.dataList = list;
+    }
+
+    public void setOnItemListener(onItemClick itemClick) {
+        this.itemClick = itemClick;
     }
 
     @NonNull
@@ -61,6 +61,10 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
         return dataList.size();
     }
 
+    public interface onItemClick {
+        void onClick(int position, String name);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView mTvName;
         ImageView mImgCheck;
@@ -70,10 +74,6 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
             mTvName = itemView.findViewById(R.id.name);
             mImgCheck = itemView.findViewById(R.id.img_check);
         }
-    }
-
-    public interface onItemClick {
-        void onClick(int position, String name);
     }
 
 }

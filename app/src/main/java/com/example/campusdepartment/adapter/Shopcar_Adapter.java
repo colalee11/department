@@ -23,7 +23,7 @@ public class Shopcar_Adapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-         return list==null?0 : list.size();
+        return list == null ? 0 : list.size();
     }
 
     @Override
@@ -33,20 +33,20 @@ public class Shopcar_Adapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-            return i;
+        return i;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
-        if (view==null){
-            view=layoutInflater.inflate(R.layout.list_shopcat,null);
-            viewHolder=new ViewHolder(view);
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.list_shopcat, null);
+            viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
-        }else {
-            viewHolder= (ViewHolder) view.getTag();
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
-        ShopcarBean shopcarBean= (ShopcarBean) getItem(i);
+        ShopcarBean shopcarBean = (ShopcarBean) getItem(i);
         viewHolder.content.setText(shopcarBean.getContent());
         viewHolder.price.setText(shopcarBean.getPrice());
         viewHolder.number.setText(shopcarBean.getNumber());
@@ -54,14 +54,16 @@ public class Shopcar_Adapter extends BaseAdapter {
         return view;
 
     }
-    class ViewHolder{
-        private TextView content,price,number;
+
+    class ViewHolder {
+        private TextView content, price, number;
         private ImageView photo;
-        public ViewHolder(View view){
-            content=view.findViewById(R.id.tiitle);
-            price=view.findViewById(R.id.price);
-            number=view.findViewById(R.id.number);
-            photo=view.findViewById(R.id.photo);
+
+        public ViewHolder(View view) {
+            content = view.findViewById(R.id.tiitle);
+            price = view.findViewById(R.id.price);
+            number = view.findViewById(R.id.number);
+            photo = view.findViewById(R.id.photo);
         }
     }
 }

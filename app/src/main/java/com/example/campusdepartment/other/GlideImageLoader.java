@@ -19,7 +19,7 @@ public class GlideImageLoader extends ImageLoader {
     //图片圆角弧度
     private float radius;
 
-    public GlideImageLoader(float radius){
+    public GlideImageLoader(float radius) {
         this.radius = radius;
     }
 
@@ -32,15 +32,17 @@ public class GlideImageLoader extends ImageLoader {
                 .centerCrop()
                 .into(imageView);
     }
+
     /**
      * 自定义圆角类，这是因为圆角新添加的
+     *
      * @param context
      * @return
      */
     @Override
     public ImageView createImageView(Context context) {
         RoundImageView roundImageView = new RoundImageView(context);
-        roundImageView.setImageViewRadius(context,radius);
+        roundImageView.setImageViewRadius(context, radius);
         return roundImageView;
 
     }

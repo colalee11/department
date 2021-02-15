@@ -24,16 +24,16 @@ import com.example.campusdepartment.other.ReadFile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BuyerActivity extends BaseActivity {
+    public static String u_id, user_check;
     protected boolean useStatusBarColor = true;
-    private BottomNavigationView navigationBar;
-    private FrameLayout frameLayout;
     AlertDialog alertDialog;
     int lastSelectedPosition = 0;
     Homepage_Fragment homepage_fragment;
     Message_Fragment message_fragment;
     My_Fragment my_fragment;
     ShoppingCar_Fragment shoppingCar_fragment;
-    public static String u_id, user_check;
+    private BottomNavigationView navigationBar;
+    private FrameLayout frameLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -154,8 +154,6 @@ public class BuyerActivity extends BaseActivity {
             Log.e("user", "u_id-MainActivity: " + u_id);
         }
     }
-
-
 
 
 }

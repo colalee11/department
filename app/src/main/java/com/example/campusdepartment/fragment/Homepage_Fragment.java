@@ -46,21 +46,21 @@ import java.util.List;
  */
 
 public class Homepage_Fragment extends BaseFragment {
+    //首页的标志
+    private static final String HOME = "home";
+    public static Handler handler;
+    //接收数据库数据所需要的数组，数据信息
+    public static String[] getData;
     TextView tv_Add;
     RelativeLayout searchView;
     List<HomeBen> list = new ArrayList<>();
     HomeAdapter fadapter;
     View view;
-    //首页的标志
-    private static final String HOME = "home";
-    private RecyclerViewForScrollView listView;
-    public static Handler handler;
-    //接收数据库数据所需要的数组，数据信息
-    public static String[] getData;
     List<HomeBen> ll_postBeans = new ArrayList<>();
     LocationClient mLocationClient; //定位客户端
     boolean isFirstLocate = true;
     BaiduMap baiduMap;
+    private RecyclerViewForScrollView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -113,17 +113,6 @@ public class Homepage_Fragment extends BaseFragment {
 
     }
 
-    //内部类，百度位置监听器
-    private class MyLocationListener implements BDLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation bdLocation) {
-            tv_Add.setText(bdLocation.getAddrStr());
-            if (bdLocation.getLocType() == BDLocation.TypeGpsLocation || bdLocation.getLocType() == BDLocation.TypeNetWorkLocation) {
-                navigateTo(bdLocation);
-            }
-        }
-    }
-
     private void navigateTo(BDLocation bdLocation) {
         if (isFirstLocate) {
             LatLng ll = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude());
@@ -168,7 +157,6 @@ public class Homepage_Fragment extends BaseFragment {
         };
     }
 
-
     /**
      * 加载广告banner轮播图
      *
@@ -190,6 +178,17 @@ public class Homepage_Fragment extends BaseFragment {
             }
         });
 
+    }
+
+    //内部类，百度位置监听器
+    private class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            tv_Add.setText(bdLocation.getAddrStr());
+            if (bdLocation.getLocType() == BDLocation.TypeGpsLocation || bdLocation.getLocType() == BDLocation.TypeNetWorkLocation) {
+                navigateTo(bdLocation);
+            }
+        }
     }
 
 

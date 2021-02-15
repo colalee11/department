@@ -22,12 +22,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
+    public static String u_id, user_check;
     EditText phone, password, check_password;
     Button button;
-    private ImageView back;
-    public static String u_id, user_check;
-    private Connection connection = null;
     String UserName;
+    private ImageView back;
+    private Connection connection = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
                                 Log.e("cdc", UserName);
                             }
                             if (phone.getText().toString().trim().equals(UserName)) {
-                                if (password.getText().toString().trim().equals(check_password.getText().toString().trim())&&!password.getText().toString().trim().equals("")&&!check_password.getText().toString().trim().equals("")) {
+                                if (password.getText().toString().trim().equals(check_password.getText().toString().trim()) && !password.getText().toString().trim().equals("") && !check_password.getText().toString().trim().equals("")) {
                                     String sql_insert = "update login set user_password=? where user_phone=" + u_id;
                                     PreparedStatement pst = connection.prepareStatement(sql_insert);
                                     pst.setString(1, password.getText().toString().trim());

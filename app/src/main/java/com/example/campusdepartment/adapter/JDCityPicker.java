@@ -45,7 +45,7 @@ public class JDCityPicker extends PopupWindow {
     CityAdapter mCityAdapter;
     AreaAdapter mAreaAdapter;
     String province, city, area;
-   CityInfoBean mCityInfoBean;
+    CityInfoBean mCityInfoBean;
     TextView mTvProvince;
     TextView mTvCity;
     TextView mTvArea;
@@ -85,7 +85,7 @@ public class JDCityPicker extends PopupWindow {
         }
         this.setAnimationStyle(R.style.PopupWindow);
 
-        String data =  com.example.campusdepartment.adapter.JsonParser.getJson(context, "city.json");
+        String data = com.example.campusdepartment.adapter.JsonParser.getJson(context, "city.json");
         JsonParser jsonParser = new JsonParser();
         JsonArray jsonElements = jsonParser.parse(data).getAsJsonArray();//获取JsonArray对象
         beans = new ArrayList<>();

@@ -15,7 +15,6 @@ import android.widget.ImageView;
 
 /**
  * @author Phil
- *
  */
 
 public class CircleImageView extends ImageView {

@@ -1,71 +1,74 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F0F0"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-  >
+    android:background="#F0F0F0">
+
     <RelativeLayout
         android:id="@+id/r1"
-        android:background="#D0F92637"
         android:layout_width="match_parent"
-        android:layout_height="140dp">
-    <ImageView
-        android:id="@+id/set"
-        android:src="@mipmap/set"
-        android:layout_alignParentRight="true"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        />
-<com.example.campusdepartment.view.CircleImageView
-    android:id="@+id/imagea"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    android:src="@mipmap/welcome"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="15dp"
-    />
-    <TextView
-        android:id="@+id/name"
-        android:layout_toRightOf="@+id/imagea"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:text="啦啦啦啦啦啦"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="30dp"
-        />
+        android:layout_height="140dp"
+        android:background="#D0F92637">
+
         <ImageView
+            android:id="@+id/set"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/set" />
+
+        <com.example.campusdepartment.view.CircleImageView
+            android:id="@+id/imagea"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/welcome" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="45dp"
+            android:layout_toRightOf="@+id/imagea"
+            android:text="啦啦啦啦啦啦"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/updata_name"
             android:layout_width="15dp"
             android:layout_height="18dp"
-            android:id="@+id/updata_name"
-            android:layout_toRightOf="@+id/name"
-            android:src="@mipmap/icon_a"
             android:layout_alignBottom="@id/name"
             android:layout_marginLeft="5dp"
-            />
+            android:layout_toRightOf="@+id/name"
+            android:src="@mipmap/icon_a" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/r2"
         android:layout_width="match_parent"
+        android:layout_height="195dp"
         android:layout_below="@+id/r1"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="-19dp"
-        android:background="@drawable/radio_q"
-        android:layout_height="195dp">
+        android:layout_marginRight="10dp"
+        android:background="@drawable/radio_q">
+
         <RelativeLayout
             android:id="@+id/r3"
             android:layout_width="match_parent"
             android:layout_height="75dp">
-            <include
-                layout="@layout/my_item1" />
+
+            <include layout="@layout/my_item1" />
         </RelativeLayout>
+
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -73,203 +76,214 @@
             android:layout_below="@+id/r3"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="#BCBBBB"/>
+            android:background="#BCBBBB" />
+
         <TextView
             android:id="@+id/text"
-            android:layout_below="@+id/view"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/my_title"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="15sp"
-            android:layout_height="wrap_content"/>
+            android:textSize="15sp" />
+
         <RelativeLayout
-            android:layout_marginTop="7dp"
-            android:layout_below="@+id/text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <include
-                layout="@layout/my_item2" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text"
+            android:layout_marginTop="7dp">
+
+            <include layout="@layout/my_item2" />
         </RelativeLayout>
 
 
     </RelativeLayout>
-<RelativeLayout
-    android:id="@+id/r4"
-    android:layout_width="match_parent"
-    android:layout_below="@+id/r2"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/radio_q"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="更多服务"
-        android:textSize="15sp"
-        android:textColor="#000000"
-        android:layout_marginTop="10dp"
+
+    <RelativeLayout
+        android:id="@+id/r4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/r2"
         android:layout_marginLeft="10dp"
-        />
-    <RelativeLayout
-        android:id="@+id/more4"
-        android:layout_below="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"
-        >
-        <ImageView
-            android:id="@+id/ivImage4"
-            android:src="@mipmap/icon_a"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:id="@+id/textView1_4"
-            android:layout_toRightOf="@+id/ivImage4"
-            android:text="收货地址"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:textColor="#000000"
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/right"
-            />
-    </RelativeLayout>
-    <View
-        android:id="@+id/view4"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/more4"
-        android:background="#BCBBBB"/>
-    <RelativeLayout
-        android:id="@+id/more1"
-        android:layout_below="@+id/more4"
-        android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"
-        >
-      <ImageView
-          android:id="@+id/ivImage"
-          android:src="@mipmap/icon_a"
-          android:layout_width="25dp"
-          android:layout_height="25dp"
-          android:layout_marginLeft="10dp"
-          />
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_toRightOf="@+id/ivImage"
-            android:text="意见反馈"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:textColor="#000000"
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/right"
-            />
-    </RelativeLayout>
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/more1"
-        android:background="#BCBBBB"/>
-    <RelativeLayout
-        android:id="@+id/more2"
-        android:layout_below="@+id/view1"
-        android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"
-        >
-        <ImageView
-            android:id="@+id/ivImage1"
-            android:src="@mipmap/guanyuwomen"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            />
+        android:layout_marginRight="10dp"
+        android:background="@drawable/radio_q">
+
         <TextView
-            android:id="@+id/textView1_1"
-            android:layout_toRightOf="@+id/ivImage1"
-            android:text="关于我们"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:textColor="#000000"
-            android:layout_marginTop="3dp"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/right"
-            />
-    </RelativeLayout>
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/more2"
-        android:background="#BCBBBB"/>
-    <RelativeLayout
-        android:id="@+id/more3"
-        android:layout_below="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"
-        >
-        <ImageView
-            android:id="@+id/ivImage2"
-            android:src="@mipmap/tuichu"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:id="@+id/textView1_2"
-            android:layout_toRightOf="@+id/ivImage2"
-            android:text="退出登陆"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:text="更多服务"
             android:textColor="#000000"
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/right"
-            />
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/more4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/ivImage4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/icon_a" />
+
+            <TextView
+                android:id="@+id/textView1_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/ivImage4"
+                android:text="收货地址"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/right" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/more4"
+            android:layout_marginTop="8dp"
+            android:background="#BCBBBB" />
+
+        <RelativeLayout
+            android:id="@+id/more1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more4"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/icon_a" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/ivImage"
+                android:text="意见反馈"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/right" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/more1"
+            android:layout_marginTop="8dp"
+            android:background="#BCBBBB" />
+
+        <RelativeLayout
+            android:id="@+id/more2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/ivImage1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/guanyuwomen" />
+
+            <TextView
+                android:id="@+id/textView1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/ivImage1"
+                android:text="关于我们"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/right" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/more2"
+            android:layout_marginTop="8dp"
+            android:background="#BCBBBB" />
+
+        <RelativeLayout
+            android:id="@+id/more3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view2"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/ivImage2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/tuichu" />
+
+            <TextView
+                android:id="@+id/textView1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/ivImage2"
+                android:text="退出登陆"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/right" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/more3"
+            android:layout_marginTop="8dp"
+            android:background="#BCBBBB" />
     </RelativeLayout>
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/more3"
-        android:background="#BCBBBB"/>
-</RelativeLayout>
 
 </RelativeLayout>

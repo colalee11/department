@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"          android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-<ImageView
-    android:id="@+id/photo"
-    android:layout_width="120dp"
-    android:scaleType="fitXY"
-    android:src="@mipmap/welcome"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_height="110dp"/>
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/welcome" />
 
     <TextView
         android:id="@+id/tiitle"
-        android:layout_toRightOf="@+id/photo"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textColor="#000"
-        android:textSize="16sp"
-        android:text="哈哈哈哈哈哈哈哈哈啊哈"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/photo"
+        android:text="哈哈哈哈哈哈哈哈哈啊哈"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
     <ImageView
         android:id="@+id/money"
         android:layout_width="16dp"
         android:layout_height="13dp"
-        android:layout_marginTop="18dp"
+        android:layout_alignBottom="@+id/photo"
         android:layout_marginLeft="10dp"
-        android:src="@mipmap/money"
+        android:layout_marginTop="18dp"
         android:layout_marginBottom="13dp"
         android:layout_toRightOf="@+id/photo"
-     android:layout_alignBottom="@+id/photo"
-        />
+        android:src="@mipmap/money" />
+
     <TextView
         android:id="@+id/price"
-        android:layout_toRightOf="@+id/money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:text="121.2"
-        android:textSize="16sp"
-        android:textColor="#fa0303"
+        android:layout_alignBottom="@+id/photo"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
-        android:layout_alignBottom="@+id/photo"
-        />
+        android:layout_toRightOf="@+id/money"
+        android:gravity="bottom"
+        android:text="121.2"
+        android:textColor="#fa0303"
+        android:textSize="16sp" />
+
     <RelativeLayout
         android:layout_width="100dp"
-        android:background="@drawable/shap_shopcar"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/photo"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        >
-    <ImageView
-        android:id="@+id/delete"
         android:layout_alignParentRight="true"
-        android:layout_width="23dp"
-        android:layout_height="18dp"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/delet"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="3dp"
-        />
-    <TextView
-        android:id="@+id/number"
-        android:layout_width="40dp"
-        android:text="1"
-        android:textColor="#000"
-        android:gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/delete"
-        />
-    <ImageView
-        android:id="@+id/add"
-        android:layout_toLeftOf="@+id/number"
-        android:layout_marginTop="2dp"
-        android:layout_width="23dp"
-        android:layout_height="18dp"
-        android:src="@mipmap/add"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="3dp"
-        />
-</RelativeLayout>
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shap_shopcar">
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="23dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="3dp"
+            android:src="@mipmap/delet" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/delete"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#000" />
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="23dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="3dp"
+            android:layout_toLeftOf="@+id/number"
+            android:src="@mipmap/add" />
+    </RelativeLayout>
 </RelativeLayout>

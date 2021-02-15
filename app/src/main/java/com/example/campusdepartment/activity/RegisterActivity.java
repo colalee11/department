@@ -21,16 +21,36 @@ import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener{
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
+    // 主线程响应方法，用于显示提示气泡
+    public Runnable runShowResult = new Runnable() {
+
+        @Override
+        public void run() {
+
+            // 弹出气泡
+            if (resultCount == -1) {
+                Toast.makeText(getApplicationContext(), "用户已注册，注册失败", Toast.LENGTH_SHORT).show();
+            } else if (resultCount == 1) {
+                // Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegisterActivity.this, Register_info_activity.class);
+                intent.putExtra("user", phone.getText().toString());
+                startActivity(intent);
+                finish();
+            }
+
+        }
+    };
     private Connection connection = null;
     private EditText phone;
     private EditText password2, check_password;
     private CheckBox checkBox;
     private ImageView back;
     private int resultCount;
-    private Handler handler = new Handler();
     Button button;
+    private Handler handler = new Handler();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +63,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         password2 = (EditText) findViewById(R.id.password);
         checkBox = (CheckBox) findViewById(R.id.user);
         check_password = (EditText) findViewById(R.id.check_password);
-        back= (ImageView) findViewById(R.id.back);
+        back = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(this);
         button = (Button) findViewById(R.id.zhuce);
         button.setOnClickListener(this);
@@ -78,7 +98,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     Toast.makeText(getApplicationContext(), "用户名不能为空", Toast.LENGTH_SHORT).show();
                     Looper.loop();
 
-                } else if(checkUsername(user_phone)==false){
+                } else if (checkUsername(user_phone) == false) {
 
                     Looper.prepare();
                     Toast.makeText(getApplicationContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
@@ -112,7 +132,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 return Count = -1;
             }
         }
-        if (checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             //商家注册成功
             PreparedStatement pst = connection.prepareStatement(sql_insert);
             pst.setString(1, user_phone);
@@ -124,7 +144,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             pst.setString(7, "");
             pst.executeUpdate();
 
-        }else {
+        } else {
             //买家注册成功
             PreparedStatement pst = connection.prepareStatement(sql_insert);
             pst.setString(1, user_phone);
@@ -140,31 +160,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
 
     //判断手机号是否正确
-    private boolean checkUsername(String username){
+    private boolean checkUsername(String username) {
         Pattern pattern = Pattern.compile("^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$");
         Matcher matcher = pattern.matcher(username);
         return matcher.matches();
     }
-    // 主线程响应方法，用于显示提示气泡
-    public Runnable runShowResult = new Runnable() {
-
-        @Override
-        public void run() {
-
-            // 弹出气泡
-            if(resultCount==-1){
-                Toast.makeText(getApplicationContext(), "用户已注册，注册失败", Toast.LENGTH_SHORT).show();
-            }
-            else if (resultCount==1){
-               // Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, Register_info_activity.class);
-                intent.putExtra("user",phone.getText().toString());
-                startActivity(intent);
-                finish();
-            }
-
-        }
-    };
 
     @Override
     public void onClick(View v) {
@@ -181,7 +181,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             connection = MysqlUtil.getConn();
                             System.out.println("连接数据库成功！！！");
 
-                            resultCount=insert();
+                            resultCount = insert();
                             Log.e("run: ", String.valueOf(resultCount));
                             // 使用handler，使主线程响应并执行runShowResult方法
                             handler.post(runShowResult);

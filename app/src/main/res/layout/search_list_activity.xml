@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/home_background"
-        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/home_background">
+
         <ImageView
             android:id="@+id/picture"
             android:layout_width="175dp"
-            android:scaleType="fitXY"
             android:layout_height="130dp"
-            android:src="@mipmap/welcome"
-            />
+            android:scaleType="fitXY"
+            android:src="@mipmap/welcome" />
+
         <TextView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/picture"
-            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/picture"
+            android:width="135dp"
             android:ellipsize="end"
             android:maxEms="11"
-            android:text="你你你你你你你你你你你你你你你你你你"
-            android:width="135dp"
-            android:maxLines="2"
-            android:textSize="14sp"
-            android:textColor="#000"
             android:maxLength="22"
-            />
+            android:maxLines="2"
+            android:text="你你你你你你你你你你你你你你你你你你"
+            android:textColor="#000"
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/money"
@@ -60,30 +60,29 @@
 
         <TextView
             android:id="@+id/text"
-            android:layout_below="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/content"
+            android:layout_alignBottom="@+id/money"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
             android:text="人付款"
             android:textColor="#000"
-            android:gravity="bottom"
-            android:textSize="10sp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_alignBottom="@+id/money"
-            />
+            android:textSize="10sp" />
+
         <TextView
+            android:id="@+id/number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/content"
+            android:layout_alignBottom="@+id/money"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/text"
+            android:gravity="bottom"
             android:text="121321"
             android:textColor="#000"
-            android:textSize="10sp"
-            android:id="@+id/number"
-            android:layout_marginTop="10dp"
-            android:gravity="bottom"
-            android:layout_alignBottom="@+id/money"
-            android:layout_toLeftOf="@+id/text"
-            />
+            android:textSize="10sp" />
     </RelativeLayout>
 </RelativeLayout>

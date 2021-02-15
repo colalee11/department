@@ -30,22 +30,24 @@ import java.util.List;
  */
 
 public class ShoppingCar_Fragment extends Fragment {
-    private final String ShoppingCar_Fragment="ShoppingCar_Fragment";
-    ListView listView;
     public static Handler handler_shop;
+    private final String ShoppingCar_Fragment = "ShoppingCar_Fragment";
+    ListView listView;
     private List<ShopcarBean> list = new ArrayList<>();
     private List list_data = new ArrayList<>();
     private SwipeRefreshLayout refreshLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shoppingcar, container, false);
-        listView=view.findViewById(R.id.listview);
+        listView = view.findViewById(R.id.listview);
         refreshLayout = view.findViewById(R.id.swipe_refresh_fans);
         user_pic();
         fresh();
         return view;
 
     }
+
     @SuppressLint("ResourceAsColor")
     private void fresh() {
         refreshLayout.setColorSchemeColors(R.color.black);
@@ -58,15 +60,16 @@ public class ShoppingCar_Fragment extends Fragment {
             }
         });
     }
+
     private void user_pic() {
         UpdateFactory factory = new UpdateFactory();
-        UpdateFactory.User_Head_Pic_query query = factory.Factory_Pic_query(BuyerActivity.u_id,ShoppingCar_Fragment);
+        UpdateFactory.User_Head_Pic_query query = factory.Factory_Pic_query(BuyerActivity.u_id, ShoppingCar_Fragment);
         try {
             query.user_head_pic_query();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        handler_shop = new Handler(){
+        handler_shop = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
@@ -83,7 +86,7 @@ public class ShoppingCar_Fragment extends Fragment {
                         list.add(bean);
                         Log.e("New_Fans", "handleMessage: " + "头像-" + list_data.get(j) + ",昵称-" + list_data.get(++j) + ",发帖人账号-" + list_data.get(++j));
                     }
-                    Shopcar_Adapter adapter = new Shopcar_Adapter(getActivity(),list);
+                    Shopcar_Adapter adapter = new Shopcar_Adapter(getActivity(), list);
                     listView.setAdapter(adapter);
 
                 }

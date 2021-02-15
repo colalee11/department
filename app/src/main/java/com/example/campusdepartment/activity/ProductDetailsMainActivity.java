@@ -33,10 +33,10 @@ public class ProductDetailsMainActivity extends BaseActivity implements View.OnC
     Connection connection;
     String name, price1, content1, price2, number1, phone1;
     Bitmap ing;
-    private byte[] user_pic;
     String u_id;
     boolean check = false;
     ContentSQLiteHelper searchSqliteHelper;
+    private byte[] user_pic;
 
     @SuppressLint("ResourceType")
     @Override

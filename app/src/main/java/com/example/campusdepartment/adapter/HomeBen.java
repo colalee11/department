@@ -9,6 +9,19 @@ public class HomeBen {
     private String content;
     private String price;
     private String number;
+
+    public HomeBen() {
+
+    }
+
+    public HomeBen(int picture, String content, String price, String number) {
+
+        this.picture = picture;
+        this.content = content;
+        this.price = price;
+        this.number = number;
+    }
+
     @Override
     public String toString() {
         return "HomeBen{" +
@@ -18,6 +31,7 @@ public class HomeBen {
                 ", number=" + number +
                 '}';
     }
+
     public int getPicture() {
         return picture;
     }
@@ -47,18 +61,6 @@ public class HomeBen {
     }
 
     public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public HomeBen() {
-
-    }
-
-    public HomeBen(int picture, String content, String price, String number) {
-
-        this.picture = picture;
-        this.content = content;
-        this.price = price;
         this.number = number;
     }
 }
