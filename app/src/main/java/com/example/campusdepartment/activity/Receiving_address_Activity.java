@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.campusdepartment.R;
 import com.example.campusdepartment.adapter.AddressAdapter;
@@ -32,7 +33,7 @@ public class Receiving_address_Activity extends BaseActivity implements View.OnC
     ListView listView;
     List<AddressBean> mList = new ArrayList<>();
     private String u_id;
-
+    private SwipeRefreshLayout refreshLayout;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class Receiving_address_Activity extends BaseActivity implements View.OnC
         u_id = ReadFile.ReadTxtFile("/data/data/com.example.campusdepartment/files/user_data.txt");
         initView();
         data();
-
+        //  fresh();
 
     }
 
@@ -50,8 +51,23 @@ public class Receiving_address_Activity extends BaseActivity implements View.OnC
         back = findViewById(R.id.back);
         add_receiving.setOnClickListener(this);
         back.setOnClickListener(this);
+        // refreshLayout = findViewById(R.id.swipe_refresh_fans);
     }
 
+    //    @SuppressLint("ResourceAsColor")
+//    private void fresh() {
+//        refreshLayout.setColorSchemeColors(R.color.black);
+//        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                //刷新内容,获取数据库的用户头像
+//                data();
+////              adapter = new Shopcar_Adapter(getActivity(),list);
+////              listView.setAdapter(adapter);
+//                refreshLayout.setRefreshing(false);
+//            }
+//        });
+//    }
     private void data() {
         final UpdateFactory factory = new UpdateFactory();
         factory.query_address_all(u_id);

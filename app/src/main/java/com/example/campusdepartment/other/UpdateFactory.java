@@ -244,7 +244,7 @@ public class UpdateFactory {
 
     }
 
-    //查询所有商品的方法
+    //查询所有收货地址的方法
     private String[] getQuery_address_all(String u_id) throws SQLException {
         Query_address_count = 0;
         String sql_query_posts = "select consignee,phonenumber,city,address FROM receiving_address where user_phone=" + u_id;
@@ -337,6 +337,13 @@ public class UpdateFactory {
                             Message msg = Message.obtain();
                             msg.obj = bitmap;
                             ShoppingCar_Fragment.handler_shop.sendMessage(msg);
+                        } else if (sign_my == "home") {
+                            Log.e("home", "run: home");
+                            String sql = "select * from commodities ";
+                            bitmap = query_home(sql);
+                            Message msg = Message.obtain();
+                            msg.obj = bitmap;
+                            Homepage_Fragment.handler.sendMessage(msg);
                         }
                     } catch (Exception e) {
                         Log.e("head_pic_query: ", "连接失败");
@@ -381,6 +388,35 @@ public class UpdateFactory {
                         list.add(price);
                         list.add(number);
                     }
+                }
+            }
+            statement.close();
+            resultSet.close();
+            return list;
+        }
+
+        private List query_home(String sql) throws SQLException {
+            Log.e("数据库,", "用户头像是否为空- ");
+            String sql_query_pic = sql;
+            Statement statement = cn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql_query_pic);
+            while (resultSet.next()) {
+                if (sign_my == "home") {
+                    User_head_query = null;
+                    user_nick_name = null;
+                    price = null;
+                    number = null;
+                    Log.e("3333", "home: ");
+                    User_head_query = resultSet.getBytes("picture");
+                    user_nick_name = resultSet.getString("content");
+                    price = resultSet.getString("price");
+                    number = resultSet.getString("number");
+                    Bitmap bmpout_pic_head = BitmapFactory.decodeByteArray(User_head_query, 0, User_head_query.length);
+                    list.add(bmpout_pic_head);
+                    list.add(user_nick_name);
+                    list.add(price);
+                    list.add(number);
+
                 }
             }
             statement.close();

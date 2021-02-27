@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusDepartment">
         <activity
+            android:name=".activity.Home_ProductDetailsMainActivity"
+            android:theme="@style/ColorTranslucentTheme" />
+        <activity
             android:name=".activity.Receiving_address_Activity"
             android:theme="@style/ColorTranslucentTheme" />
         <activity
@@ -47,10 +50,7 @@
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/ColorTranslucentTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".activity.BuyerActivity"
@@ -64,7 +64,10 @@
         <activity
             android:name=".activity.WelcomeActivity"
             android:theme="@style/ColorTranslucentTheme">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <service

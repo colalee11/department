@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.campusdepartment.R;
@@ -13,14 +14,36 @@ import com.example.campusdepartment.R;
 import java.util.List;
 
 public class Shopcar_Adapter extends BaseAdapter {
+    private Context mContext;
     private List<ShopcarBean> list;
     private LayoutInflater layoutInflater;
+    //    private List<DataHolder> mDataList = new ArrayList<DataHolder>();
+    private View.OnClickListener mDelClickListener;
+
+    //, View.OnClickListener delClickListener
+    public Shopcar_Adapter(Context context, List<ShopcarBean> list, View.OnClickListener delClickListener) {
+        this.list = list;
+        mContext = context;
+        layoutInflater = LayoutInflater.from(context);
+        mDelClickListener = delClickListener;
+    }
 
     public Shopcar_Adapter(Context context, List<ShopcarBean> list) {
         this.list = list;
-        this.layoutInflater = LayoutInflater.from(context);
+        mContext = context;
+        layoutInflater = LayoutInflater.from(context);
     }
 
+
+    public void removeItem(int position) {
+        list.remove(position);
+        notifyDataSetChanged();
+    }
+
+    //    public void addItem(DataHolder item) {
+//        mDataList.add(item);
+//        notifyDataSetChanged();
+//    }
     @Override
     public int getCount() {
         return list == null ? 0 : list.size();
@@ -51,6 +74,12 @@ public class Shopcar_Adapter extends BaseAdapter {
         viewHolder.price.setText(shopcarBean.getPrice());
         viewHolder.number.setText(shopcarBean.getNumber());
         viewHolder.photo.setImageBitmap(shopcarBean.getPicture());
+
+
+        shopcarBean.rootView = (LinearLayout) view.findViewById(R.id.lin_root);
+        shopcarBean.rootView.scrollTo(0, 0);
+        TextView delTv = (TextView) view.findViewById(R.id.del);
+        delTv.setOnClickListener(mDelClickListener);
         return view;
 
     }
@@ -66,4 +95,8 @@ public class Shopcar_Adapter extends BaseAdapter {
             photo = view.findViewById(R.id.photo);
         }
     }
+//    public static class DataHolder {
+//        public String title;
+//        public LinearLayout rootView;
+//    }
 }

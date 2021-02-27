@@ -122,8 +122,8 @@ public class SearchMainActivity extends BaseActivity implements AdapterView.OnIt
             @Override
             public void onClick(View view) {
                 //隐藏键盘
-                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
-                        .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+//                        .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 //保存搜索记录
                 insertRecords(mEditSearch.getText().toString().trim());
                 if (mEditSearch.getText().toString().equals("")) {

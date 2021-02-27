@@ -1,88 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="120dp"
-        android:layout_height="110dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@mipmap/welcome" />
-
-    <TextView
-        android:id="@+id/tiitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/photo"
-        android:text="哈哈哈哈哈哈哈哈哈啊哈"
-        android:textColor="#000"
-        android:textSize="16sp" />
-
-    <ImageView
-        android:id="@+id/money"
-        android:layout_width="16dp"
-        android:layout_height="13dp"
-        android:layout_alignBottom="@+id/photo"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="13dp"
-        android:layout_toRightOf="@+id/photo"
-        android:src="@mipmap/money" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/photo"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toRightOf="@+id/money"
-        android:gravity="bottom"
-        android:text="121.2"
-        android:textColor="#fa0303"
-        android:textSize="16sp" />
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/photo"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/shap_shopcar">
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
 
         <ImageView
-            android:id="@+id/delete"
-            android:layout_width="23dp"
-            android:layout_height="18dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="3dp"
-            android:src="@mipmap/delet" />
+            android:id="@+id/photo"
+            android:layout_width="120dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/welcome" />
 
         <TextView
-            android:id="@+id/number"
-            android:layout_width="40dp"
+            android:id="@+id/tiitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/delete"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#000" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/photo"
+            android:text="哈哈哈哈哈哈哈哈哈啊哈"
+            android:textColor="#000"
+            android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/add"
-            android:layout_width="23dp"
-            android:layout_height="18dp"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="3dp"
-            android:layout_toLeftOf="@+id/number"
-            android:src="@mipmap/add" />
+            android:id="@+id/money"
+            android:layout_width="16dp"
+            android:layout_height="13dp"
+            android:layout_alignBottom="@+id/photo"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="13dp"
+            android:layout_toRightOf="@+id/photo"
+            android:src="@mipmap/money" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/photo"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/money"
+            android:gravity="bottom"
+            android:text="121.2"
+            android:textColor="#fa0303"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/photo"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shap_shopcar">
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="23dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="3dp"
+                android:src="@mipmap/delet" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/delete"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#000" />
+
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="23dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toLeftOf="@+id/number"
+                android:src="@mipmap/add" />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+
+    <TextView
+        android:id="@+id/del"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:background="#ffff00"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="#ffffff"
+        android:textSize="25dp" />
+</LinearLayout>

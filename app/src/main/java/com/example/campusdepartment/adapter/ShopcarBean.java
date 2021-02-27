@@ -1,21 +1,26 @@
 package com.example.campusdepartment.adapter;
 
 import android.graphics.Bitmap;
+import android.widget.LinearLayout;
 
 public class ShopcarBean {
     String content;
     Bitmap picture;
     String price;
     String number;
+    public String title;
+    public LinearLayout rootView;
 
     public ShopcarBean() {
     }
 
-    public ShopcarBean(String content, Bitmap picture, String price, String number) {
+    public ShopcarBean(String content, Bitmap picture, String price, String number, String title, LinearLayout rootView) {
         this.content = content;
         this.picture = picture;
         this.price = price;
         this.number = number;
+        this.title = title;
+        this.rootView = rootView;
     }
 
     public String getContent() {
@@ -50,6 +55,22 @@ public class ShopcarBean {
         this.number = number;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public LinearLayout getRootView() {
+        return rootView;
+    }
+
+    public void setRootView(LinearLayout rootView) {
+        this.rootView = rootView;
+    }
+
     @Override
     public String toString() {
         return "ShopcarBean{" +
@@ -57,6 +78,8 @@ public class ShopcarBean {
                 ", picture=" + picture +
                 ", price='" + price + '\'' +
                 ", number='" + number + '\'' +
+                ", title='" + title + '\'' +
+                ", rootView=" + rootView +
                 '}';
     }
 }

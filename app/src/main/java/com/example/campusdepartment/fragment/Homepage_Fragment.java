@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -30,6 +31,7 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.model.LatLng;
 import com.example.campusdepartment.R;
 import com.example.campusdepartment.Utils.ImageUtils;
+import com.example.campusdepartment.activity.Home_ProductDetailsMainActivity;
 import com.example.campusdepartment.activity.SearchMainActivity;
 import com.example.campusdepartment.adapter.HomeAdapter;
 import com.example.campusdepartment.adapter.HomeBen;
@@ -56,12 +58,12 @@ public class Homepage_Fragment extends BaseFragment {
     List<HomeBen> list = new ArrayList<>();
     HomeAdapter fadapter;
     View view;
-    List<HomeBen> ll_postBeans = new ArrayList<>();
+    //List<HomeBen> ll_postBeans = new ArrayList<>();
     LocationClient mLocationClient; //定位客户端
     boolean isFirstLocate = true;
     BaiduMap baiduMap;
     private RecyclerViewForScrollView listView;
-
+    private List list_data = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
@@ -79,13 +81,63 @@ public class Homepage_Fragment extends BaseFragment {
         return view;
     }
 
-    private void requestLocation() {
+    private void data() {
+        UpdateFactory factory = new UpdateFactory();
+        UpdateFactory.User_Head_Pic_query query = factory.Factory_Pic_query(null, HOME);
+        try {
+            query.user_head_pic_query();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        handler = new Handler() {
+            @SuppressLint("HandlerLeak")
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                list.clear();//刷新后清除之前的数据
+                list_data = (List) msg.obj;
+                if (list_data.size() > 0) {
+                    for (int i = 0, j = 0; i < list_data.size(); i++, j++) {
+                        HomeBen bean = new HomeBen();
+                        //把泛型强制转换为byte[],再转换为bitmap类型
+                        bean.setPicture((Bitmap) list_data.get(i));
+                        bean.setContent((String) list_data.get(++i));
+                        bean.setPrice((String) list_data.get(++i));
+                        bean.setNumber((String) list_data.get(++i));
+                        list.add(bean);
+                        Log.e("home", "handleMessage: " + "头像-" + list_data.get(j) + ",昵称-" + list_data.get(++j) + ",发帖人账号-" + list_data.get(++j));
+                        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                        listView.setLayoutManager(staggeredGridLayoutManager);
+                        fadapter = new HomeAdapter(list);
+                        listView.setAdapter(fadapter);
+                        fadapter.setOnItemClickListener(new HomeAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Bitmap bitmap = (Bitmap) list.get(position).getPicture();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("content", (String) list.get(position).getContent());
+                                bundle.putParcelable("picture", bitmap);
+                                bundle.putString("number", (String) list.get(position).getNumber());
+                                bundle.putString("price", (String) list.get(position).getPrice());
+                                Intent intent = new Intent(getActivity(), Home_ProductDetailsMainActivity.class);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
 
+                            }
+                        });
+                    }
+
+
+                }
+            }
+        };
+    }
+
+    private void requestLocation() {
         mLocationClient.start();
     }
 
     private void initLocation() {  //初始化
-
         mLocationClient = new LocationClient(getActivity().getApplicationContext());
         mLocationClient.registerLocationListener(new MyLocationListener());
         SDKInitializer.initialize(getActivity().getApplicationContext());
@@ -122,40 +174,40 @@ public class Homepage_Fragment extends BaseFragment {
         }
     }
 
-    private void data() {
-        /*工厂*/
-        final UpdateFactory factory = new UpdateFactory();
-        factory.query_posts_all(HOME);//传入首页标志
-        final int[] cc = {0};
-        handler = new Handler() {
-            @SuppressLint("RestrictedApi")
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
-                getData = (String[]) msg.obj;
-                Bundle c = msg.getData();
-                cc[0] = c.getInt("Query_count");
-                Log.e("Query_count", "Query_count: " + cc[0]);
-                if (cc[0] > 0) {
-                    for (int i = 0; i < cc[0]; i++) {
-                        final HomeBen postBean = new HomeBen();
-                        postBean.setContent(getData[i]);
-                        postBean.setPrice(getData[++i]);
-                        postBean.setNumber(getData[++i]);
-                        postBean.setPicture(R.mipmap.welcome);
-                        ll_postBeans.add(postBean);
-                        Log.e("ccc", "cccc");
-                        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-                        listView.setLayoutManager(staggeredGridLayoutManager);
-                        fadapter = new HomeAdapter(ll_postBeans);
-                        listView.setAdapter(fadapter);
-
-
-                    }
-                }
-            }
-        };
-    }
+//    private void data() {
+//        /*工厂*/
+//        final UpdateFactory factory = new UpdateFactory();
+//        factory.query_posts_all(HOME);//传入首页标志
+//        final int[] cc = {0};
+//        handler = new Handler() {
+//            @SuppressLint("RestrictedApi")
+//            @Override
+//            public void handleMessage(@NonNull Message msg) {
+//                super.handleMessage(msg);
+//                getData = (String[]) msg.obj;
+//                Bundle c = msg.getData();
+//                cc[0] = c.getInt("Query_count");
+//                Log.e("Query_count", "Query_count: " + cc[0]);
+//                if (cc[0] > 0) {
+//                    for (int i = 0; i < cc[0]; i++) {
+//                        final HomeBen postBean = new HomeBen();
+//                        postBean.setContent(getData[i]);
+//                        postBean.setPrice(getData[++i]);
+//                        postBean.setNumber(getData[++i]);
+//                        postBean.setPicture(R.mipmap.welcome);
+//                        ll_postBeans.add(postBean);
+//                        Log.e("ccc", "cccc");
+//                        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//                        listView.setLayoutManager(staggeredGridLayoutManager);
+//                        fadapter = new HomeAdapter(ll_postBeans);
+//                        listView.setAdapter(fadapter);
+//
+//
+//                    }
+//                }
+//            }
+//        };
+//    }
 
     /**
      * 加载广告banner轮播图

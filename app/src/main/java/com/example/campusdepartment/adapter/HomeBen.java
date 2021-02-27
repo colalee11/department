@@ -1,11 +1,13 @@
 package com.example.campusdepartment.adapter;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by 林嘉煌 on 2021/1/5.
  */
 
 public class HomeBen {
-    private int picture;
+    private Bitmap picture;
     private String content;
     private String price;
     private String number;
@@ -14,7 +16,7 @@ public class HomeBen {
 
     }
 
-    public HomeBen(int picture, String content, String price, String number) {
+    public HomeBen(Bitmap picture, String content, String price, String number) {
 
         this.picture = picture;
         this.content = content;
@@ -32,11 +34,11 @@ public class HomeBen {
                 '}';
     }
 
-    public int getPicture() {
+    public Bitmap getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(Bitmap picture) {
         this.picture = picture;
     }
 

@@ -29,13 +29,14 @@ import java.util.List;
  * Created by 林嘉煌 on 2020/12/11.
  */
 
-public class ShoppingCar_Fragment extends Fragment {
+public class ShoppingCar_Fragment extends Fragment implements View.OnClickListener {
     public static Handler handler_shop;
     private final String ShoppingCar_Fragment = "ShoppingCar_Fragment";
     ListView listView;
     private List<ShopcarBean> list = new ArrayList<>();
     private List list_data = new ArrayList<>();
     private SwipeRefreshLayout refreshLayout;
+    Shopcar_Adapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class ShoppingCar_Fragment extends Fragment {
         listView = view.findViewById(R.id.listview);
         refreshLayout = view.findViewById(R.id.swipe_refresh_fans);
         user_pic();
+
+//        adapter = new Shopcar_Adapter(getActivity(),list, this);
+//        listView.setAdapter(adapter);
         fresh();
         return view;
 
@@ -56,6 +60,8 @@ public class ShoppingCar_Fragment extends Fragment {
             public void onRefresh() {
                 //刷新内容,获取数据库的用户头像
                 user_pic();
+//              adapter = new Shopcar_Adapter(getActivity(),list);
+//              listView.setAdapter(adapter);
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -70,6 +76,7 @@ public class ShoppingCar_Fragment extends Fragment {
             e.printStackTrace();
         }
         handler_shop = new Handler() {
+            @SuppressLint("HandlerLeak")
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
@@ -85,12 +92,24 @@ public class ShoppingCar_Fragment extends Fragment {
                         bean.setNumber((String) list_data.get(++i));
                         list.add(bean);
                         Log.e("New_Fans", "handleMessage: " + "头像-" + list_data.get(j) + ",昵称-" + list_data.get(++j) + ",发帖人账号-" + list_data.get(++j));
+                        // adapter = new Shopcar_Adapter(getActivity(),list, (View.OnClickListener) getActivity());
+                        adapter = new Shopcar_Adapter(getActivity(), list);
+                        listView.setAdapter(adapter);
                     }
-                    Shopcar_Adapter adapter = new Shopcar_Adapter(getActivity(), list);
-                    listView.setAdapter(adapter);
+
 
                 }
             }
         };
     }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.del) {
+            int position = listView.getPositionForView(view);
+            adapter.removeItem(position);
+            Log.e("xxx", "购物车删除" + position);
+        }
+    }
+
 }

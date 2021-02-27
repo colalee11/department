@@ -108,7 +108,7 @@ public class ProductDetailsMainActivity extends BaseActivity implements View.OnC
 
                             for (i = 0, j = 0, p = 0; i < phone.length; i++, j++, p++) {
                                 if (name.equals(content[i]) && price1.equals(price[j])) {
-                                    String sql_insert = "update shop_car set picture=?,content=?,price=? ,number=? where price =" + price[j];
+                                    String sql_insert = "update shop_car set picture=?,content=?,price=? ,number=? where " + "price=" + price[j] + "and" + " where user_phone=" + u_id;
 
                                     PreparedStatement pst = connection.prepareStatement(sql_insert);
                                     pst.setBytes(1, user_pic);
@@ -143,5 +143,6 @@ public class ProductDetailsMainActivity extends BaseActivity implements View.OnC
                 break;
         }
     }
+
 
 }
