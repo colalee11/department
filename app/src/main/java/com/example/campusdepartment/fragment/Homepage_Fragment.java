@@ -2,6 +2,7 @@ package com.example.campusdepartment.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -36,6 +37,7 @@ import com.example.campusdepartment.activity.SearchMainActivity;
 import com.example.campusdepartment.adapter.HomeAdapter;
 import com.example.campusdepartment.adapter.HomeBen;
 import com.example.campusdepartment.other.UpdateFactory;
+import com.example.campusdepartment.other.loadDialogUtils;
 import com.example.campusdepartment.view.RecyclerViewForScrollView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -62,6 +64,7 @@ public class Homepage_Fragment extends BaseFragment {
     LocationClient mLocationClient; //定位客户端
     boolean isFirstLocate = true;
     BaiduMap baiduMap;
+    private Dialog mDialog;
     private RecyclerViewForScrollView listView;
     private List list_data = new ArrayList<>();
     @Override
@@ -71,9 +74,13 @@ public class Homepage_Fragment extends BaseFragment {
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         listView = view.findViewById(R.id.listview);
-
+        listView.setLayoutManager(staggeredGridLayoutManager);
+        mDialog = loadDialogUtils.createLoadingDialog(getContext(), "加载中...");
+        mDialog.create();
         data();
+
         initLocation();
         requestLocation();
         initSceneryHotBanner(view);
@@ -82,6 +89,8 @@ public class Homepage_Fragment extends BaseFragment {
     }
 
     private void data() {
+
+        mDialog.show();
         UpdateFactory factory = new UpdateFactory();
         UpdateFactory.User_Head_Pic_query query = factory.Factory_Pic_query(null, HOME);
         try {
@@ -94,9 +103,10 @@ public class Homepage_Fragment extends BaseFragment {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
-                list.clear();//刷新后清除之前的数据
+                //list.clear();//刷新后清除之前的数据
                 list_data = (List) msg.obj;
                 if (list_data.size() > 0) {
+
                     for (int i = 0, j = 0; i < list_data.size(); i++, j++) {
                         HomeBen bean = new HomeBen();
                         //把泛型强制转换为byte[],再转换为bitmap类型
@@ -106,10 +116,9 @@ public class Homepage_Fragment extends BaseFragment {
                         bean.setNumber((String) list_data.get(++i));
                         list.add(bean);
                         Log.e("home", "handleMessage: " + "头像-" + list_data.get(j) + ",昵称-" + list_data.get(++j) + ",发帖人账号-" + list_data.get(++j));
-                        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-                        listView.setLayoutManager(staggeredGridLayoutManager);
                         fadapter = new HomeAdapter(list);
                         listView.setAdapter(fadapter);
+                        mDialog.dismiss();
                         fadapter.setOnItemClickListener(new HomeAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
@@ -122,17 +131,19 @@ public class Homepage_Fragment extends BaseFragment {
                                 Intent intent = new Intent(getActivity(), Home_ProductDetailsMainActivity.class);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
-
                             }
                         });
                     }
-
-
+                } else {
+//
+//                    listView.setVisibility(View.GONE);
+//                    loadDialogUtils.closeDialog(mDialog);
                 }
             }
         };
-    }
 
+
+    }
     private void requestLocation() {
         mLocationClient.start();
     }
